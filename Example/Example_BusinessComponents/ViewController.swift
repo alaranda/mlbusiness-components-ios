@@ -15,6 +15,7 @@ class ViewController: UIViewController, MLBusinessLoyaltyBroadcastReceiver {
     
     private weak var ringView: MLBusinessLoyaltyRingView?
     private weak var loyaltyHeaderView: MLBusinessLoyaltyHeaderView?
+    private weak var bannerView: MLBusinessBannerView?
     private var discountTouchpointsView: MLBusinessTouchpointsView?
 
     override func viewDidLoad() {
@@ -45,7 +46,8 @@ extension ViewController {
         let crossSellingBoxView = setupCrossSellingBoxView(bottomOf: itemDescriptionView)
         let discountView = setupDiscountView(numberOfItems: 6, bottomOf: crossSellingBoxView)
         let actionCardView = setupActionCardView(bottomOf: discountView)
-        let discountTouchpointView = setupDiscountTouchpointsView(numberOfItems: 6, bottomOf: actionCardView)
+        let itemDescriptionView2 = setupItemDescriptionView(bottomOf: actionCardView)
+        let discountTouchpointView = setupDiscountTouchpointsView(numberOfItems: 6, bottomOf: itemDescriptionView2)
         let downloadAppView = setupDownloadAppView(bottomOf: discountTouchpointView)
         let loyaltyHeaderView = setupLoyaltyHeaderView(bottomOf: downloadAppView)
         let animatedButtonView = setupAnimatedButtonView(bottomOf: loyaltyHeaderView)
@@ -53,7 +55,9 @@ extension ViewController {
         let hybridCarousel = setupHybridCarouselView(bottomOf: rowView)
         let multipleRowTouchpointView = setupMultipleRowTouchpointView(bottomOf: hybridCarousel)
         let carouselView = setupCoverCarouselView(bottomOf: multipleRowTouchpointView)
-        let openSheet = setupSheetViewController(bottomOf: carouselView)
+        let bannerView = setupBannerView(bottomOf: carouselView)
+        let openSheet = setupSheetViewController(bottomOf: bannerView)
+        
         
         openSheet.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -64).isActive = true
     }
@@ -185,6 +189,19 @@ extension ViewController {
         }
         
         return crossSellingBoxView
+    }
+    
+    private func setupBannerView(bottomOf targetView: UIView) -> MLBusinessBannerView {
+
+        let bannerView = MLBusinessBannerView(BannerData())
+        containerView.addSubview(bannerView)
+        NSLayoutConstraint.activate([
+            bannerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            bannerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            bannerView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16)
+        ])
+        
+        return bannerView
     }
     
     private func setupLoyaltyHeaderView(bottomOf targetView: UIView) -> MLBusinessLoyaltyHeaderView {
