@@ -45,6 +45,7 @@ extension ViewController {
         let crossSellingBoxView = setupCrossSellingBoxView(bottomOf: itemDescriptionView)
         let discountView = setupDiscountView(numberOfItems: 6, bottomOf: crossSellingBoxView)
         let actionCardView = setupActionCardView(bottomOf: discountView)
+        
         let discountTouchpointView = setupDiscountTouchpointsView(numberOfItems: 6, bottomOf: actionCardView)
         let downloadAppView = setupDownloadAppView(bottomOf: discountTouchpointView)
         let loyaltyHeaderView = setupLoyaltyHeaderView(bottomOf: downloadAppView)
@@ -52,7 +53,10 @@ extension ViewController {
         let rowView = setupRowView(bottomOf: animatedButtonView)
         let hybridCarousel = setupHybridCarouselView(bottomOf: rowView)
         let multipleRowTouchpointView = setupMultipleRowTouchpointView(bottomOf: hybridCarousel)
-        let carouselView = setupCoverCarouselView(bottomOf: multipleRowTouchpointView)
+        
+        let bannerView2 = setupBannerView(bottomOf: multipleRowTouchpointView)
+        let carouselView = setupCoverCarouselView(bottomOf: bannerView2)
+
         let openSheet = setupSheetViewController(bottomOf: carouselView)
         
         openSheet.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -64).isActive = true
@@ -73,7 +77,22 @@ extension ViewController {
         discountTouchpointsView.update(with: CoverCarouselData())
         return discountTouchpointsView
     }
+    private func setupBannerView(bottomOf topView: UIView) -> UIView {
+        let bannerData = BannerData()
+        let bannerView = MLBusinessBannerView(bannerData)
 
+        
+        containerView.addSubview(bannerView)
+        
+        NSLayoutConstraint.activate([
+            bannerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            bannerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
+            bannerView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 16)
+        ])
+        
+      
+        return bannerView
+    }
     private func setupRingView(_ receiver: MLBusinessLoyaltyBroadcastReceiver) -> MLBusinessLoyaltyRingView {
         let ringData = LoyaltyRingData()
         let ringView = MLBusinessLoyaltyRingView(ringData, fillPercentProgress: false)
