@@ -18,8 +18,8 @@ import MLUI
 
 
 @objcMembers
-open class MLBusinessBannerView: UIView {
-    let viewData: MLBusinessBannerData
+open class MLBusinessAdsBannerView: UIView {
+    let viewData: MLBusinessAdsBannerData
 
     private let verticalMargin: CGFloat = 20
 
@@ -27,7 +27,7 @@ open class MLBusinessBannerView: UIView {
 
     private var tapAction: ((_ deepLink: String) -> Void)?
 
-    public init(_ viewData: MLBusinessBannerData) {
+    public init(_ viewData: MLBusinessAdsBannerData) {
         self.viewData = viewData
         super.init(frame: .zero)
         render()
@@ -39,7 +39,7 @@ open class MLBusinessBannerView: UIView {
 }
 
 // MARK: Privates.
-extension MLBusinessBannerView {
+extension MLBusinessAdsBannerView {
     private func render() {
         self.prepareForAutolayout()
 

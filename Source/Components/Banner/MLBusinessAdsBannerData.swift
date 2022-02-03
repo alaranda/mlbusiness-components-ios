@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc public protocol MLBusinessBannerData: NSObjectProtocol {
+@objc public protocol MLBusinessAdsBannerData: NSObjectProtocol {
     @objc optional func getTitle() -> String?
     @objc optional func getSubtitle() -> String?
     @objc func getUrl() -> String

@@ -78,8 +78,8 @@ extension ViewController {
         return discountTouchpointsView
     }
     private func setupBannerView(bottomOf topView: UIView) -> UIView {
-        let bannerData = BannerData()
-        let bannerView = MLBusinessBannerView(bannerData)
+        let bannerData = AdsBannerData()
+        let bannerView = MLBusinessAdsBannerView(bannerData)
 
         
         containerView.addSubview(bannerView)
