@@ -1,0 +1,61 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9839ac9d920e085eeb2a2c72cf0318b62e"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9868329f78dad97a2897d8d34e540d59be"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e987d0e45802eebd1598aa757140d9e23ea"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98eaf8eadb832b280e53f7e6d59d76608f"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9864a05d27bc7b197d1f04b9097f626494"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e983500675aa576c9d027bb8f7d51549c69"
+    }
+  ],
+  "containerPath" : "/Users/alaranda/Documents/mlbusiness-components-ios/Example/Pods/Pods.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/alaranda/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/alaranda/Library/Developer/Xcode/DerivedData/Pods-brvwkwqlwigflhblqnkgmsydmspv/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/alaranda/Library/Developer/Xcode/DerivedData/Pods-brvwkwqlwigflhblqnkgmsydmspv/Index/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : false
+}
