@@ -71,7 +71,7 @@ extension ViewController {
         NSLayoutConstraint.activate([
             discountTouchpointsView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
             discountTouchpointsView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
-            discountTouchpointsView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 16)
+            discountTouchpointsView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 20)
         ])
         
         discountTouchpointsView.update(with: CoverCarouselData())
@@ -87,8 +87,13 @@ extension ViewController {
         NSLayoutConstraint.activate([
             bannerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             bannerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            bannerView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 16)
+            bannerView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 20),
+            
         ])
+        
+        bannerView.addTapAction { deepLink in
+            print(deepLink)
+        }
         
       
         return bannerView
@@ -135,7 +140,7 @@ extension ViewController {
         NSLayoutConstraint.activate([
             discountView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             discountView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            discountView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16)
+            discountView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20)
         ])
         discountView.addTapAction { (selectedIndex, deepLink, trackId) in
             print("EBC: index \(selectedIndex), deeplink: \(deepLink ?? ""), trackId: \(trackId ?? "")")
@@ -150,7 +155,7 @@ extension ViewController {
         NSLayoutConstraint.activate([
             actionCardView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             actionCardView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            actionCardView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16)
+            actionCardView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20)
         ])
         actionCardView.addTapAction {
             print("Button tapped")
@@ -168,7 +173,7 @@ extension ViewController {
         NSLayoutConstraint.activate([
             discountTouchpointsView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             discountTouchpointsView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            discountTouchpointsView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16)
+            discountTouchpointsView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20)
         ])
         return discountTouchpointsView
     }
@@ -177,7 +182,7 @@ extension ViewController {
         let downloadAppView = MLBusinessDownloadAppView(DownloadAppData())
         containerView.addSubview(downloadAppView)
         NSLayoutConstraint.activate([
-            downloadAppView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16),
+            downloadAppView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             downloadAppView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             downloadAppView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])
@@ -196,7 +201,7 @@ extension ViewController {
         NSLayoutConstraint.activate([
             crossSellingBoxView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             crossSellingBoxView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            crossSellingBoxView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16)
+            crossSellingBoxView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20)
         ])
 
         crossSellingBoxView.addTapAction { (deepLink) in
@@ -210,7 +215,7 @@ extension ViewController {
         let loyaltyHeaderView = MLBusinessLoyaltyHeaderView(LoyaltyHeaderData(), fillPercentProgress: false)
         containerView.addSubview(loyaltyHeaderView)
         NSLayoutConstraint.activate([
-            loyaltyHeaderView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16),
+            loyaltyHeaderView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             loyaltyHeaderView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             loyaltyHeaderView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
             ])
@@ -222,7 +227,7 @@ extension ViewController {
         let itemDescriptionView = MLBusinessItemDescriptionView(ItemDescriptionData())
         containerView.addSubview(itemDescriptionView)
         NSLayoutConstraint.activate([
-            itemDescriptionView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16),
+            itemDescriptionView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             itemDescriptionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             itemDescriptionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
             ])
@@ -233,7 +238,7 @@ extension ViewController {
         let animatedButtonView = MLBusinessAnimatedButton(normalLabel: "Normal", loadingLabel: "Loading")
         containerView.addSubview(animatedButtonView)
         NSLayoutConstraint.activate([
-            animatedButtonView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16),
+            animatedButtonView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             animatedButtonView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             animatedButtonView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])
@@ -248,7 +253,7 @@ extension ViewController {
         rowView.update(with: RowData())
         containerView.addSubview(rowView)
         NSLayoutConstraint.activate([
-            rowView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16),
+            rowView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             rowView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             rowView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])
@@ -291,7 +296,7 @@ extension ViewController {
         containerView.addSubview(button)
         
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 16),
+            button.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             button.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             button.heightAnchor.constraint(equalToConstant: 54.0)
