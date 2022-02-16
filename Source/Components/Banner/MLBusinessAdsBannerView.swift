@@ -21,9 +21,7 @@ import MLUI
 open class MLBusinessAdsBannerView: UIView {
     let viewData: MLBusinessAdsBannerData
 
-    private let verticalMargin: CGFloat = 20
-
-    private let buttonHeight: CGFloat = 20
+    private let verticalMargin: CGFloat = 0.0
 
     private var tapAction: ((_ deepLink: String) -> Void)?
 
@@ -40,11 +38,22 @@ open class MLBusinessAdsBannerView: UIView {
 
 // MARK: Privates.
 extension MLBusinessAdsBannerView {
+    
+
+    
     private func render() {
         self.prepareForAutolayout()
-
+        
+        layer.backgroundColor = UIColor.clear.cgColor
+        layer.isOpaque = false
+        layer.applyShadow(alpha: 0.12, x: 0, y: 4, blur: 16)
+        
+        
         let banner = buildBanner()
         self.addSubview(banner)
+        banner.isUserInteractionEnabled = true;
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnButton))
+        banner.addGestureRecognizer(tapGesture)
 
         makeConstraints(banner)
     }
@@ -52,6 +61,10 @@ extension MLBusinessAdsBannerView {
     // MARK: Builders.
     private func buildBanner() -> UIImageView {
         let banner = UIImageView()
+        
+        banner.roundCorners([.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner], radius: 8.0)
+        banner.clipsToBounds = true
+        
         banner.prepareForAutolayout(.clear)
         banner.setRemoteImage(imageUrl: viewData.getUrl())
 
@@ -64,29 +77,27 @@ extension MLBusinessAdsBannerView {
     func makeConstraints( _ banner: UIImageView) {
         NSLayoutConstraint.activate([
             banner.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
-            banner.leadingAnchor.constraint(equalTo: leadingAnchor),
-            banner.widthAnchor.constraint(equalToConstant: 350),
-            banner.heightAnchor.constraint(equalToConstant: 100),
-            banner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin)
+            banner.widthAnchor.constraint(equalTo: widthAnchor, multiplier:  1.0),
+            banner.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
+            banner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
+            
+            
+            
             
 
             
         ])
     }
 
-/*    // MARK: Tap Selector.
+    // MARK: Tap Selector.
     @objc private func didTapOnButton() {
-        tapAction?(viewData.getButtonDeepLink())
+        tapAction?(viewData.getDeepLink())
     }
 }
 
 // MARK: Public Methods.
-extension MLBusinessBannerView {
+extension MLBusinessAdsBannerView {
     @objc open func addTapAction(_ action: @escaping ((_ deepLink: String) -> Void)) {
         self.tapAction = action
     }
-
-    @objc open func fillPercentProgressWithAnimation(_ duration: TimeInterval = 1.0) {
-        ringView?.startProgress(to: CGFloat(viewData.getRingPercentage()), duration: duration)
-    }*/
 }
