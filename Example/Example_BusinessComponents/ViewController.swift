@@ -16,10 +16,14 @@ class ViewController: UIViewController, MLBusinessLoyaltyBroadcastReceiver {
     private weak var ringView: MLBusinessLoyaltyRingView?
     private weak var loyaltyHeaderView: MLBusinessLoyaltyHeaderView?
     private var discountTouchpointsView: MLBusinessTouchpointsView?
+    private var bannerView: MLBusinessAdsBannerView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(self)
+        if(bannerView != nil && self.view.subviews.contains(bannerView!)){
+            bannerView?.delegate?.didRender()
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -79,8 +83,8 @@ extension ViewController {
     }
     private func setupBannerView(bottomOf topView: UIView) -> UIView {
         let bannerData = AdsBannerData()
-        let bannerView = MLBusinessAdsBannerView(bannerData)
-
+        let bannerView = MLBusinessAdsBannerView(bannerData, self)
+        self.bannerView = bannerView
         
         containerView.addSubview(bannerView)
         
@@ -365,6 +369,11 @@ extension ViewController: MLBusinessAnimatedButtonDelegate {
         print("TimeOut")
     }
 
+}
+
+extension ViewController: MLBusinessAdsBannerViewDelegate{
+    func didRender() {
+    }
 }
 
 extension ViewController: MLBusinessTouchpointsUserInteractionHandler {

@@ -15,6 +15,10 @@
 import UIKit
 import MLUI
 
+@objc public protocol MLBusinessAdsBannerViewDelegate{
+    func didRender(_ printUrl: String)
+    func didTap(deepLink: String, clickUrl: String)
+}
 
 
 @objcMembers
@@ -22,11 +26,12 @@ open class MLBusinessAdsBannerView: UIView {
     let viewData: MLBusinessAdsBannerData
 
     private let verticalMargin: CGFloat = 0.0
+    
+    @objc public weak var delegate: MLBusinessAdsBannerViewDelegate?
 
-    private var tapAction: ((_ deepLink: String) -> Void)?
-
-    public init(_ viewData: MLBusinessAdsBannerData) {
+    public init(_ viewData: MLBusinessAdsBannerData, _ delegate: MLBusinessAdsBannerViewDelegate? = nil) {
         self.viewData = viewData
+        self.delegate = delegate
         super.init(frame: .zero)
         render()
     }
@@ -38,16 +43,12 @@ open class MLBusinessAdsBannerView: UIView {
 
 // MARK: Privates.
 extension MLBusinessAdsBannerView {
-    
-
-    
     private func render() {
         self.prepareForAutolayout()
         
         layer.backgroundColor = UIColor.clear.cgColor
         layer.isOpaque = false
         layer.applyShadow(alpha: 0.12, x: 0, y: 4, blur: 16)
-        
         
         let banner = buildBanner()
         self.addSubview(banner)
@@ -66,7 +67,7 @@ extension MLBusinessAdsBannerView {
         banner.clipsToBounds = true
         
         banner.prepareForAutolayout(.clear)
-        banner.setRemoteImage(imageUrl: viewData.getUrl())
+        banner.setRemoteImage(imageUrl: viewData.getImageUrl())
 
         return banner
     }
@@ -80,24 +81,18 @@ extension MLBusinessAdsBannerView {
             banner.widthAnchor.constraint(equalTo: widthAnchor, multiplier:  1.0),
             banner.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25),
             banner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
-            
-            
-            
-            
-
-            
         ])
     }
 
     // MARK: Tap Selector.
     @objc private func didTapOnButton() {
-        tapAction?(viewData.getDeepLink())
+        self.delegate?.didTap(deepLink: viewData.getDeepLink(), clickUrl: viewData.getClickUrl())
     }
 }
 
-// MARK: Public Methods.
-extension MLBusinessAdsBannerView {
-    @objc open func addTapAction(_ action: @escaping ((_ deepLink: String) -> Void)) {
-        self.tapAction = action
+//PUBLIC
+extension MLBusinessAdsBannerView{
+    public func viewDidRender(){
+        self.delegate?.didRender(viewData.getPrintUrl())
     }
 }
