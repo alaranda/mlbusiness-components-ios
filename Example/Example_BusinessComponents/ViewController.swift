@@ -47,10 +47,14 @@ extension ViewController {
         let dividingLineView = setupDividingLineView(bottomOf: newRingView)
         let itemDescriptionView = setupItemDescriptionView(bottomOf: dividingLineView)
         let crossSellingBoxView = setupCrossSellingBoxView(bottomOf: itemDescriptionView)
+        
+        
+        
+        
         let discountView = setupDiscountView(numberOfItems: 6, bottomOf: crossSellingBoxView)
         let actionCardView = setupActionCardView(bottomOf: discountView)
-        
-        let discountTouchpointView = setupDiscountTouchpointsView(numberOfItems: 6, bottomOf: actionCardView)
+        let bannerView2 = setupBannerView(bottomOf: actionCardView)
+        let discountTouchpointView = setupDiscountTouchpointsView(numberOfItems: 6, bottomOf: bannerView2)
         let downloadAppView = setupDownloadAppView(bottomOf: discountTouchpointView)
         let loyaltyHeaderView = setupLoyaltyHeaderView(bottomOf: downloadAppView)
         let animatedButtonView = setupAnimatedButtonView(bottomOf: loyaltyHeaderView)
@@ -58,8 +62,8 @@ extension ViewController {
         let hybridCarousel = setupHybridCarouselView(bottomOf: rowView)
         let multipleRowTouchpointView = setupMultipleRowTouchpointView(bottomOf: hybridCarousel)
         
-        let bannerView2 = setupBannerView(bottomOf: multipleRowTouchpointView)
-        let carouselView = setupCoverCarouselView(bottomOf: bannerView2)
+        
+        let carouselView = setupCoverCarouselView(bottomOf: multipleRowTouchpointView)
 
         let openSheet = setupSheetViewController(bottomOf: carouselView)
         
