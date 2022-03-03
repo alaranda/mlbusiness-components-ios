@@ -21,14 +21,14 @@ class ViewController: UIViewController, MLBusinessLoyaltyBroadcastReceiver {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(self)
-        if(bannerView != nil && self.view.subviews.contains(bannerView!)){
-            bannerView?.delegate?.didRender()
-        }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animateRing()
+        if(bannerView != nil && self.containerView.subviews.contains(bannerView!)){
+            bannerView?.viewDidRender()        }
     }
     
     func receiveInfo(_ notification: Notification) {
@@ -95,9 +95,6 @@ extension ViewController {
             
         ])
         
-        bannerView.addTapAction { deepLink in
-            print(deepLink)
-        }
         
       
         return bannerView
@@ -372,8 +369,16 @@ extension ViewController: MLBusinessAnimatedButtonDelegate {
 }
 
 extension ViewController: MLBusinessAdsBannerViewDelegate{
-    func didRender() {
+    func didRender(_ printUrl: String) {
+        print(printUrl)
     }
+    
+    func didTap(deepLink: String, clickUrl: String) {
+        print(deepLink)
+        print(clickUrl)
+    }
+    
+    
 }
 
 extension ViewController: MLBusinessTouchpointsUserInteractionHandler {

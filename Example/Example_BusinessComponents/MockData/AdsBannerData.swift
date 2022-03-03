@@ -11,6 +11,14 @@ import MLBusinessComponents
 
 
 class AdsBannerData: NSObject, MLBusinessAdsBannerData {
+    func getImageUrl() -> String {
+        return "https://http2.mlstatic.com/D_NQ_983670-MLA48849245111_012022-F.jpg"
+    }
+    
+    func getClickUrl() -> String {
+        return "click"
+    }
+    
     
     func getUrl() -> String {
         return "https://http2.mlstatic.com/D_NQ_983670-MLA48849245111_012022-F.jpg"
